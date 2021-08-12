@@ -17,7 +17,11 @@ export const StyledHeader = styled.div`
   justify-content: center;
   align-items: center;
   color: ${({ theme }) => theme.colors.white[0]};
-
+  > div:first-of-type {
+    position: absolute;
+    margin-right: 300px;
+    cursor: pointer;
+  }
   h1 {
     padding-left: ${({ theme }) => `${theme.spacing[2]}px`};
   }

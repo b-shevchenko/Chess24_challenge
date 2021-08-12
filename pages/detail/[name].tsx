@@ -9,6 +9,7 @@ const ParagraphDetail = ({ data }: { data: string[] }) => {
   const content = data.filter(paragraph => paragraph.split('. ')[0].includes(name![0]))
   return (
     <Page
+      returnButton
       headerContent={<h1>Hello, Chess!</h1>}
       footerContent={<h2>Play with Voypost</h2>}
     >
