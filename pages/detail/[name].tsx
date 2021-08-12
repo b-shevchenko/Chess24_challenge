@@ -6,7 +6,7 @@ const ParagraphDetail = ({ data }: { data: string[] }) => {
   const router = useRouter()
   const { name } = router.query
 
-  const content = data.filter(paragraph => paragraph.includes(name![0]))
+  const content = data.filter(paragraph => paragraph.split('. ')[0].includes(name![0]))
   return (
     <Page
       headerContent={<h1>Hello, Chess!</h1>}

@@ -4,30 +4,24 @@ import { StyledPaginationContainer } from './styles';
 import { Props } from './types';
 
 const Pagination: React.FC<Props> = (props: Props) => {
-  const { onPageChange, dataCount, currentPage } = props
+  const { onPageChange, numberOfPages, currentPage } = props
   const [cardPerPage, setCardPerPage] = useState(3);
-  const numberOfPages = Math.ceil(dataCount / cardPerPage);
-  const pageNumbers = []
-
-  for (let i = 1; i <= numberOfPages; i++) {
-    pageNumbers.push(i);
-  }
 
   return (
     <StyledPaginationContainer>
       <StyledButton onClick={() => {
         if (currentPage > 1) {
-          onPageChange(currentPage - 1)
+          onPageChange(currentPage - 1, false)
         }
       }}
       >
         Prev
       </StyledButton>
-      {pageNumbers}
+      {currentPage}/{numberOfPages}
       <StyledButton onClick={() => {
-        if (currentPage < numberOfPages) {
-          onPageChange(currentPage + 1)
-        }
+        const nextPage = currentPage + 1;
+        const shouldGetNewData = currentPage === numberOfPages - 1 ? true : false
+        onPageChange(nextPage, shouldGetNewData);
       }}
       >
         Next

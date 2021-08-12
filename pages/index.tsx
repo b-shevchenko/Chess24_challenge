@@ -4,11 +4,12 @@ import { Card } from '../components/Card';
 import { Page } from '../components/Page';
 import Pagination from '../components/Pagination';
 
-const Home = ({ data }: { data: string[] }) => {
+const Home = ({ data, getNewData }: { data: string[], getNewData: () => void }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [cardPerPage, setCardPerPage] = useState<number>(4);
   const indexOfLastCard = currentPage * cardPerPage;
   const indexOfFirstCard = indexOfLastCard - cardPerPage;
+  const numberOfPages = Math.ceil(data.length / cardPerPage);
 
   const currentTodos = data.slice(indexOfFirstCard, indexOfLastCard);
 
@@ -23,13 +24,17 @@ const Home = ({ data }: { data: string[] }) => {
   });
 
   useEffect(() => {
-    const pageBeforeReload = localStorage.getItem('currentPage');
-    setCurrentPage(Number(pageBeforeReload));
-  }, [])
+    if (renderedContent.length < cardPerPage) {
+      getNewData();
+    }
+  }, [currentPage])
 
-  useEffect(() => {
-    localStorage.setItem('currentPage', String(currentPage));
-  }, [currentPage]);
+  const onPageChange = (page: number, shouldGetNewData: boolean) => {
+    if (shouldGetNewData) {
+      getNewData();
+    }
+    setCurrentPage(page);
+  }
 
   return (
     <Page
@@ -44,8 +49,8 @@ const Home = ({ data }: { data: string[] }) => {
 
       <Pagination
         currentPage={currentPage}
-        dataCount={data.length}
-        onPageChange={(page) => setCurrentPage(page)}
+        numberOfPages={numberOfPages}
+        onPageChange={(page, shouldGetNewData) => onPageChange(page, shouldGetNewData)}
       />
       {renderedContent}
     </Page>
