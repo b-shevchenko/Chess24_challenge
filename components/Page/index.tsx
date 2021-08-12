@@ -13,7 +13,7 @@ export const Page: React.FC<Props> = (props: Props) => {
 
   const Header = () => (
     <StyledHeader>
-      <Image src="/chess_logo.svg" alt="chess logo" />
+      <Image src="/chess_logo.png" width={50} height={50} alt="chess logo" />
       {headerContent}
     </StyledHeader>
   )
