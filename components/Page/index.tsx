@@ -1,6 +1,6 @@
-import { StyledPage, StyledHeader, StyledFooter } from "./styles";
+import { StyledPage, StyledHeader, StyledFooter, StyledContentContainer, StyledContent } from "./styles";
 import { Props } from "./types";
-
+import Image from "next/image"
 
 export const Page: React.FC<Props> = (props: Props) => {
   const { children, headerContent, footerContent } = props;
@@ -13,7 +13,7 @@ export const Page: React.FC<Props> = (props: Props) => {
 
   const Header = () => (
     <StyledHeader>
-      <img src="/chess_logo.svg" />
+      <Image src="/chess_logo.svg" alt="chess logo" />
       {headerContent}
     </StyledHeader>
   )
@@ -21,7 +21,11 @@ export const Page: React.FC<Props> = (props: Props) => {
   return (
     <StyledPage>
       {headerContent && <Header />}
-      {children}
+      <StyledContentContainer>
+        <StyledContent>
+          {children}
+        </StyledContent>
+      </StyledContentContainer>
       {footerContent && <Footer />}
     </StyledPage>
   )
