@@ -9,7 +9,7 @@ const Pagination: React.FC<Props> = (props: Props) => {
 
   return (
     <StyledPaginationContainer>
-      <StyledButton onClick={() => {
+      <StyledButton disabled={!Boolean(currentPage > 1)} onClick={() => {
         if (currentPage > 1) {
           onPageChange(currentPage - 1, false)
         }
