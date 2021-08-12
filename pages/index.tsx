@@ -6,7 +6,7 @@ import Pagination from '../components/Pagination';
 
 const Home = ({ data }: { data: string[] }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [cardPerPage, setCardPerPage] = useState<number>(3);
+  const [cardPerPage, setCardPerPage] = useState<number>(4);
   const indexOfLastCard = currentPage * cardPerPage;
   const indexOfFirstCard = indexOfLastCard - cardPerPage;
 
@@ -42,13 +42,12 @@ const Home = ({ data }: { data: string[] }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {renderedContent}
-
       <Pagination
         currentPage={currentPage}
         dataCount={data.length}
         onPageChange={(page) => setCurrentPage(page)}
       />
+      {renderedContent}
     </Page>
   )
 }

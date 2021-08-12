@@ -1,14 +1,13 @@
 import styled from 'styled-components'
 
 export const StyledButton = styled.button`
-  background-color:#000000;
-  border-radius:32px;
-  border:5px solid #dcdcdc;
+  background-color: ${({ theme }) => theme.colors.black[0]};
+  border-radius:${({ theme }) => `${theme.radii[4]}px`};
+  border:${({ theme }) => `${theme.borderWidths[3]}px solid ${theme.colors.gray[0]}`};
   display:inline-block;
   cursor:pointer;
-  color:#ffffff;
-  font-size:24px;
+  color: ${({ theme }) => theme.colors.white[0]};
+  font-size: ${({ theme }) => `${theme.fontSizes[4]}px`};
   font-weight:bold;
-  padding:6px 24px;
-  fill: white;
+  padding: ${({ theme }) => `${theme.spacing[2]}px ${theme.spacing[5]}px`};
 `

@@ -12,16 +12,13 @@ export const StyledHeader = styled.div`
   top: 0;
   width: 100%;
   position: sticky;
-  background-color: black;
+  background-color: ${({ theme }) => theme.colors.black[0]};
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
-  svg {
-    width: 100px;
-  }
+  color:  ${({ theme }) => theme.colors.white[0]};
   h1 {
-    padding-left: 10px;
+    padding-left: ${({ theme }) => `${theme.spacing[2]}px`};
   }
 `
 
@@ -29,15 +26,20 @@ export const StyledFooter = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  border-top: 1px solid black;
+  border:${({ theme }) => `${theme.borderWidths[1]}px solid ${theme.colors.black[0]}`};
 `
 
 export const StyledContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
 `
 
 export const StyledContent = styled.div`
   width: 500px;
+  @media ${({ theme }) => theme.mediaQueries.medium} {
+    width: 85%;
+  }
+
 `

@@ -1,8 +1,14 @@
+import { ThemeProvider } from 'styled-components';
 import '../styles/globals.css'
+import { Chess24Theme } from '../theme';
 import { Props } from './types';
 
 function MyApp({ Component, pageProps, data }: Props) {
-  return <Component {...pageProps} data={data} />
+  return (
+    <ThemeProvider theme={Chess24Theme} >
+      <Component {...pageProps} data={data} />
+    </ThemeProvider>
+  )
 }
 
 MyApp.getInitialProps = async ({ Component, ctx }: any) => {

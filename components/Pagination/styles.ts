@@ -4,5 +4,6 @@ export const StyledPaginationContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
+  padding-top: ${({ theme }) => `${theme.spacing[5]}px`};
+  padding-bottom: ${({ theme }) => `${theme.spacing[5]}px`};
 `

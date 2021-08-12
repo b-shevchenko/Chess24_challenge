@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 
 export const StyledCard = styled.div`
-  box-shadow: 1px 1px 9px 2px gray;
-  margin: 20px;
-  padding: 20px;
+  box-shadow: ${({ theme }) => theme.elevation[1]};
+  margin-top: ${({ theme }) => `${theme.spacing[5]}px`};
+  margin-bottom: ${({ theme }) => `${theme.spacing[5]}px`};
+  padding: ${({ theme }) => `${theme.spacing[5]}px`};
   cursor: pointer;
+  text-align: center;
 `
 export const StyledCardTitle = styled.div`
   display: flex;
