@@ -16,7 +16,8 @@ export const StyledHeader = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color:  ${({ theme }) => theme.colors.white[0]};
+  color: ${({ theme }) => theme.colors.white[0]};
+
   h1 {
     padding-left: ${({ theme }) => `${theme.spacing[2]}px`};
   }
@@ -34,12 +35,19 @@ export const StyledContentContainer = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100%;
+
+  @media ${({ theme }) => theme.mediaQueries.medium} {
+    height: 75%;
+  }
 `
 
 export const StyledContent = styled.div`
   width: 500px;
+
   @media ${({ theme }) => theme.mediaQueries.medium} {
-    width: 85%;
+    width: 100%;
+    padding: ${({ theme }) => `${theme.spacing[3]}px`};
+    overflow: auto;
   }
 
 `
