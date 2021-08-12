@@ -1,12 +1,12 @@
 import Head from 'next/head'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Card } from '../components/Card';
 import { Page } from '../components/Page';
 import Pagination from '../components/Pagination';
 
 const Home = ({ data }: { data: string[] }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [cardPerPage, setCardPerPage] = useState(3);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [cardPerPage, setCardPerPage] = useState<number>(3);
   const indexOfLastCard = currentPage * cardPerPage;
   const indexOfFirstCard = indexOfLastCard - cardPerPage;
 
@@ -21,6 +21,15 @@ const Home = ({ data }: { data: string[] }) => {
       </Card >
     )
   });
+
+  useEffect(() => {
+    const pageBeforeReload = localStorage.getItem('currentPage');
+    setCurrentPage(Number(pageBeforeReload));
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('currentPage', String(currentPage));
+  }, [currentPage]);
 
   return (
     <Page
